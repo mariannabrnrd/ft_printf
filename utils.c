@@ -6,7 +6,7 @@
 /*   By: mariaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:04:49 by mariaber          #+#    #+#             */
-/*   Updated: 2025/01/21 10:44:38 by mariaber         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:13:10 by je               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	ft_check(int n, int *count)
 {
 	if (n == 0 || n == -2147483648)
 		ft_checkzero(n, count);
-	if (n < 0)
+	else if(n < 0)
 	{
 		ft_putchar('-', count);
-		n *= -1;
+		ft_putnbr((unsigned int)(-n), count);
 	}
-	ft_putnbr((unsigned int)n, count);
+	else
+		ft_putnbr((unsigned int)n, count);
 }
 
 // stampa zero e min int
@@ -49,9 +50,13 @@ void	ft_putnbr(unsigned int n, int *count)
 	if (!num)
 		return ;
 	num[i] = '\0';
+	if (n == 0)
+	{
+		num[0] = '0';
+	}
 	while (n != 0)
 	{
-		num[i - 1] = n % 10 + 48;
+		num[i - 1] = (n % 10) + 48;
 		n /= 10;
 		i--;
 	}
@@ -59,8 +64,15 @@ void	ft_putnbr(unsigned int n, int *count)
 	free(num);
 }
 
+/*void	ft_putnbr(unsigned int n, int *count)
+{
+	if (n > 9)
+		ft_putnbr(n / 10, count);
+	ft_putchar((n % 10) + '0', count);
+}*/
+
 // serve per putnbr, conta quanti numeri(spazio) devo allocare nella stringa
-int	ft_countnum(int n)
+int	ft_countnum(unsigned int n)
 {
 	int	i;
 

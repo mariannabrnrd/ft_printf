@@ -6,7 +6,7 @@
 /*   By: mariaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:20:07 by mariaber          #+#    #+#             */
-/*   Updated: 2025/01/21 10:20:17 by mariaber         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:14:19 by je               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_putstr(char *str, int *count);
 void	ft_check(int n, int *count);
 void	ft_checkzero(int n, int *count);
 void	ft_putnbr(unsigned int n, int *count);
-int		ft_countnum(int n);
+int		ft_countnum(unsigned int n);
 void	ft_puthex(unsigned int num, int *count, const char c);
 void	ft_putpntr(void *num, int *count);
 void	ft_puthexp(unsigned long long n, int *count);
