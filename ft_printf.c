@@ -6,7 +6,7 @@
 /*   By: mariaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 11:17:09 by mariaber          #+#    #+#             */
-/*   Updated: 2025/01/21 13:38:31 by je               ###   ########.fr       */
+/*   Updated: 2025/01/22 10:30:05 by mariaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,23 +61,13 @@ void	ft_putchar(char c, int *count)
 	(*count)++;
 }
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while(str[i])
-		i++;
-	return (i);
-}
-
 // stampa la stringa richiamando putchar
 void	ft_putstr(char *str, int *count)
 {
 	if (!str)
 	{
 		ft_putstr("(null)", count);
-		return;
+		return ;
 	}
 	while (*str)
 	{

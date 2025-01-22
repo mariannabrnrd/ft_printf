@@ -6,7 +6,7 @@
 /*   By: mariaber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 10:04:49 by mariaber          #+#    #+#             */
-/*   Updated: 2025/01/21 14:13:10 by je               ###   ########.fr       */
+/*   Updated: 2025/01/22 10:33:40 by mariaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_check(int n, int *count)
 {
 	if (n == 0 || n == -2147483648)
 		ft_checkzero(n, count);
-	else if(n < 0)
+	else if (n < 0)
 	{
 		ft_putchar('-', count);
 		ft_putnbr((unsigned int)(-n), count);
@@ -63,13 +63,6 @@ void	ft_putnbr(unsigned int n, int *count)
 	ft_putstr(num, count);
 	free(num);
 }
-
-/*void	ft_putnbr(unsigned int n, int *count)
-{
-	if (n > 9)
-		ft_putnbr(n / 10, count);
-	ft_putchar((n % 10) + '0', count);
-}*/
 
 // serve per putnbr, conta quanti numeri(spazio) devo allocare nella stringa
 int	ft_countnum(unsigned int n)
