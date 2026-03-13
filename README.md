@@ -2,7 +2,7 @@
 
 ## 📌 Descrizione
 
-**ft_printf** è una reimplementazione della funzione `printf` della libreria standard C, sviluppata come parte del percorso formativo della scuola **42**.
+**Ft_printf** è una reimplementazione della funzione `printf` della libreria standard C, sviluppata come parte del percorso formativo della scuola **42**.
 Il progetto consiste nel creare una funzione in grado di gestire diversi formati di stampa, replicando il comportamento della funzione originale.
 
 L'obiettivo è comprendere il funzionamento delle variadic functions e migliorare la gestione dell'output e della formattazione in C.
