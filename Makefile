@@ -1,39 +1,67 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mariaber <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/21 10:49:48 by mariaber          #+#    #+#              #
-#    Updated: 2025/01/21 12:05:03 by mariaber         ###   ########.fr        #
-#                                                                              #
+#                                   CONFIG                                     #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-CC = cc
-AR = ar rcs
-RM = rm -f
-FLAGS = -g -Wall -Werror -Wextra 
+NAME 	= libftprintf.a
 
-SOURCES = ft_printf.c utils.c utils2.c
+CC      = gcc
+AR      = ar rcs
+RM      = rm -rf
+CFLAGS  = -Wall -Wextra -Werror -g -gdwarf-4
 
-OBJECTS = $(SOURCES:.c=.o)
+# **************************************************************************** #
+#                                   COLORS                                     #
+# **************************************************************************** #
 
-$(NAME): $(OBJECTS)
-	$(AR) $@ $^
+LAVENDER    = \033[1;38;2;230;190;255m
+ORCHID      = \033[1;38;2;218;112;214m
+PLUM        = \033[1;38;2;221;160;221m
+GREEN       = \033[1;92m
+RED         = \033[1;91m
+LIGHT_CYAN  = \033[1;96m
+RESET       = \033[0m
 
-%.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+# **************************************************************************** #
+#                                   PATHS                                      #
+# **************************************************************************** #
+
+SRCS_DIR = srcs
+OBJS_DIR = objs
+INCLUDES = -I include
+
+# **************************************************************************** #
+#                                   SOURCES                                    #
+# **************************************************************************** #
+
+SRCS_FILES = $(wildcard srcs/*.c)
+OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS_FILES:.c=.o))
+
+# **************************************************************************** #
+#                                   RULES                                      #
+# **************************************************************************** #
 
 all: $(NAME)
 
+$(OBJS_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(NAME): $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
+	@printf "$(PLUM)✓ $(NAME) compiled successfully!$(RESET)\n"
+
+# **************************************************************************** #
+#                                   CLEANUP                                    #
+# **************************************************************************** #
+
 clean:
-	$(RM) $(OBJECTS)
+	@$(RM) $(OBJS_DIR)
+	@printf "$(ORCHID)Object files cleaned!$(RESET)\n"
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@printf "$(LAVENDER)Full cleanup done!$(RESET)\n"
 
 re: fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re
